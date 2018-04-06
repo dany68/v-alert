@@ -1,0 +1,13 @@
+{
+  "name": "v-alert",
+  "version": "0.0.0",
+  "description": "A dismissible alert box component for Vue.js 2",
+  "main": "src/index.js",
+  "keywords": [
+    "alert",
+    "flash",
+    "message"
+  ],
+  "author": "Daniel Elmalem <delmalem697@gmail.com>",
+  "license": "MIT"
+}
