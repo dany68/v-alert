@@ -1,7 +1,7 @@
 <template lang="html">
-    <div v-if="isDisplayed" class="alert">
+    <div v-if="isDisplayed" :class="alertClasses" role="alert">
 
-        <div v-if="dismissible" class="alert-close-btn" @click="dismiss">Close</div>
+        <div v-if="dismissible" class="alert-close-btn" @click="dismiss" title="Close"></div>
         <slot></slot>
 
     </div>
@@ -25,6 +25,22 @@ export default {
         dismissible: {
             type: Boolean,
             default: false
+        },
+
+        /**
+         * Define the main class of the alert div.
+         */
+        type: {
+            type: String,
+            default: 'alert'
+        },
+
+        /**
+         * Add a `is-{level}` class to the alert.
+         */
+        level: {
+            type: String,
+            default: 'info'
         }
     },
 
@@ -50,6 +66,18 @@ export default {
     watch: {
         show() {
             this.showChanged();
+        }
+    },
+
+    computed: {
+        /**
+         * Classes to be output on the alert div.
+         */
+        alertClasses() {
+            return [
+                this.type,
+                `is-${this.level}`
+            ]
         }
     },
 
