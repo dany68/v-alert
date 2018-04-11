@@ -40,19 +40,29 @@ export default {
 On your page you can now use html like this to render the alert:
 
 ```html
-<v-alert class="is-success" dismissible>
+<v-alert type="flash" level="success" dismissible>
     <h2>Well done!</h2>
     <p>You can write any HTML/JS here.</p>
 </v-alert>
-```
 
-The `class` attribute apply to `<v-alert>` will be bind to the `.alert` div. Therefore you can easily make different themes with CSS.
+<!-- Will generate -->
+
+<div class="flash is-success" role="alert">
+    <button type="button" class="alert-close-btn" title="Close"></button>
+    <h2>Well done!</h2>
+    <p>You can write any HTML/JS here.</p>
+</div>
+
+<!-- A click on the .alert-close-btn will remove the alert from the DOM  -->
+```
 
 
 | Prop        | Type              | Default | Required | Description                                                                                                   |
 | ----------- | ----------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------- |
 | show        | Boolean or Number | true    | No       | Define if the alert is displayed. If it's a number, it represent the number of second the alert is displayed. |
-| dismissible | Boolean           | false   | No       | Add a close `X` button that will remove the alert once clicked.                                                |
+| type        | String            | alert   | No       | Define the main class of the alert div.                                                                       |
+| level       | String            | info    | No       | Define the variant of the alert by adding a '.is-{level}' class to the alert.                                 |
+| dismissible | Boolean           | false   | No       | Add a close `X` button that will remove the alert from the DOM once clicked.                                  |
 
 
 ### Two way binding with v-model
@@ -69,5 +79,5 @@ The v-model attribute can be used instead of the `show` property to bind the dat
 
 | Events             | Description                                                                                                     |
 | ------------------ | --------------------------------------------------------------------------------------------------------------- |
-| dissmissed         | Fired when the alert is removed.                                                                                |
-| dismiss-count-down | Fired each second until the end of the timer. Only fired is the show prop or the v-model attribute is a number. | 
+| dismissed          | Fired when the alert is removed from the DOM.                                                                   |
+| dismiss-count-down | Fired each second until the end of the timer. Only fired if the show prop or the v-model attribute is a number. |

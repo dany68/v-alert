@@ -1,7 +1,7 @@
 <template lang="html">
     <div v-if="isDisplayed" :class="alertClasses" role="alert">
 
-        <div v-if="dismissible" class="alert-close-btn" @click="dismiss" title="Close"></div>
+        <button v-if="dismissible" @click="dismiss" type="button" class="alert-close-btn" title="Close"></button>
         <slot></slot>
 
     </div>
